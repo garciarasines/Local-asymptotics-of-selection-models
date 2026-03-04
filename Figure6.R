@@ -65,13 +65,13 @@ SIM = function(theta0, model, gamma, n, B = 2e4, llim = 0){
 }
 
 # Results
-res_normal_d_50 = SIM(theta0 = 2, gamma = 0.01, n = 50, model = "normal")
+res_normal_d_50 = SIM(theta0 = 2, gamma = 1e-5, n = 50, model = "normal")
 res_normal_r_50 = SIM(theta0 = 2, gamma = 1/5, n = 50, model = "normal")
-res_exponential_d_50 = SIM(theta0 = 2, gamma = 0.01, n = 50, model = "exponential")
+res_exponential_d_50 = SIM(theta0 = 2, gamma = 1e-51, n = 50, model = "exponential")
 res_exponential_r_50 = SIM(theta0 = 2, gamma = 1/5, n = 50, model = "exponential")
-res_normal_d_100 = SIM(theta0 = 2, gamma = 0.01, n = 100, model = "normal")
+res_normal_d_100 = SIM(theta0 = 2, gamma = 1e-5, n = 100, model = "normal")
 res_normal_r_100 = SIM(theta0 = 2, gamma = 1/5, n = 100, model = "normal")
-res_exponential_d_100 = SIM(theta0 = 2, gamma = 0.01, n = 100, model = "exponential")
+res_exponential_d_100 = SIM(theta0 = 2, gamma = 1e-5, n = 100, model = "exponential")
 res_exponential_r_100 = SIM(theta0 = 2, gamma = 1/5, n = 100, model = "exponential")
 
 # Plot
