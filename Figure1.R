@@ -1,4 +1,3 @@
-# Plots p-value distributions for asymptotic construction (black) and Monte Carlo implementation of exact procedure (blue)
 SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
   
   set.seed(123)
@@ -40,18 +39,18 @@ SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
   
   if (theta == theta0){
     plot(ecdf(pvals_SLAN), col = 1, lwd = 2, main = paste("n =", n, ", null"), xlab = "p", ylab = "F(p)")
-    lines(ecdf(pvals_exact),col = 4, lwd = 2)
+    lines(ecdf(pvals_exact),col = 8, lwd = 2)
     abline(a = 0, b = 1)
   } else {
     plot(ecdf(pvals_SLAN), col = 1, lwd = 2, main = paste("n =", n, ", alt"), xlab = "p", ylab = "F(p)")
-    lines(ecdf(pvals_exact),col = 4, lwd = 2)
+    lines(ecdf(pvals_exact),col = 8, lwd = 2)
     abline(a = 0, b = 1)
   }
   
 }
 
-par(mfrow = c(2, 2))
-SIM(n = 50, theta = 2, theta0 = 2, t = 2.1, B = 1e4)
-SIM(n = 50, theta = 2.15, theta0 = 2, t = 2.1, B = 1e4)
-SIM(n = 200, theta = 2, theta0 = 2, t = 5.6, B = 1e4)
-SIM(n = 200, theta = 2.15, theta0 = 2, t = 5.6, B = 1e4)
+pdf("Exponential.pdf", width = 10, height = 5)
+par(mfrow = c(1, 2))
+SIM(n = 100, theta = 2, theta0 = 2, t = 3.57, B = 1e5)
+SIM(n = 100, theta = 2.15, theta0 = 2, t = 3.57, B = 1e5)
+dev.off()
