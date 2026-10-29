@@ -38,7 +38,7 @@ SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
   }
   
   xgrid = seq(0, 1, length.out = 1001)
-  title = if (theta == theta0) paste("n =", n, ", null") else paste("n =", n, ", alt")
+  title = if (theta == theta0) "null" else "alt"
   
   plot(xgrid, ecdf(pvals_SLAN)(xgrid), type = "l",
        col = 1, lwd = 2, main = title, xlab = "p", ylab = "F(p)",
