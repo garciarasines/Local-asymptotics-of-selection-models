@@ -1,3 +1,4 @@
+# Simulation function
 SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
   
   set.seed(123)
@@ -48,6 +49,7 @@ SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
   
 }
 
+# Plots
 pdf("Exponential_pvals.pdf", width = 8, height = 4)
 par(mfrow = c(1, 2))
 SIM(n = 100, theta = 2, theta0 = 2, t = 3.57, B = 1e5)
