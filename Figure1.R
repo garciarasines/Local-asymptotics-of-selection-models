@@ -49,7 +49,7 @@ SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
   
 }
 
-pdf("Exponential.pdf", width = 10, height = 5)
+pdf("Exponential_pvals.pdf", width = 10, height = 5)
 par(mfrow = c(1, 2))
 SIM(n = 100, theta = 2, theta0 = 2, t = 3.57, B = 1e5)
 SIM(n = 100, theta = 2.15, theta0 = 2, t = 3.57, B = 1e5)
