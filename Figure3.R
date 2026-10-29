@@ -79,22 +79,25 @@ varphi_star_ratio = function(h) varphi_star(h)/varphi_star0
 
 
 # Plot
+pdf("Gaussian_approximation.pdf", width = 8, height = 8)
 par(mfrow = c(2, 2))
+par(cex = 1)
 
 z1s = seq(-1, 5, length.out = 1e3)
 z2 = 0
-plot(z1s, sapply(z1s, function(z1) p_star(c(z1, z2))), xlab = "z1", ylab = "p*", type = "l", lty = 2, lwd = 1.5)
+plot(z1s, sapply(z1s, function(z1) p_star(c(z1, z2))), xlab = "z1", ylab = "p*", type = "l", lty = 2, lwd = 2)
 
 z2s = seq(-1, 5, length.out = 1e3)
 z1 = 1
-plot(z2s, sapply(z2s, function(z2) p_star(c(z1, z2))), xlab = "z2", ylab = "p*", type = "l", lty = 2, lwd = 1.5)
+plot(z2s, sapply(z2s, function(z2) p_star(c(z1, z2))), xlab = "z2", ylab = "p*", type = "l", lty = 2, lwd = 2)
 
 h1s = seq(-1, 5, length.out = 50)
 h2 = 0
-plot(h1s, log(sapply(h1s, function(h1) varphi_ratio(c(h1, h2)))), xlab = "h1", ylab = "r/r*", type = "l", lty = 1, lwd = 1, col = "blue")
-lines(h1s, log(sapply(h1s, function(h1) varphi_star_ratio(c(h1, h2)))), lwd = 1)
+plot(h1s, log(sapply(h1s, function(h1) varphi_ratio(c(h1, h2)))), xlab = "h1", ylab = "r/r*", type = "l", lty = 1, lwd = 2, col = 8)
+lines(h1s, log(sapply(h1s, function(h1) varphi_star_ratio(c(h1, h2)))), lwd = 2)
 
 h2s = seq(-1, 5, length.out = 50)
 h1 = 1
-plot(h2s, log(sapply(h2s, function(h2) varphi_ratio(c(h1, h2)))), xlab = "h2", ylab = "r/r*", type = "l", lty = 1, lwd = 1, col = "blue")
-lines(h2s, log(sapply(h2s, function(h2) varphi_star_ratio(c(h1, h2)))), lwd = 1)
+plot(h2s, log(sapply(h2s, function(h2) varphi_ratio(c(h1, h2)))), xlab = "h2", ylab = "r/r*", type = "l", lty = 1, lwd = 2, col = 8)
+lines(h2s, log(sapply(h2s, function(h2) varphi_star_ratio(c(h1, h2)))), lwd = 2)
+dev.off()
