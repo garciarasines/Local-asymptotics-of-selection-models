@@ -160,12 +160,12 @@ SIM = function(mu, sigma2, mu0, type, t, n1, n2, B = 1e3, MCMC_samples = 5e3) {
     set.seed(b)
     y = samp(mu, sigma2, t, n1, n2)
     pvals[b] = p_val(y, mu0, type, t, n1, n2, MCMC_samples)
-
+    
     plot(ecdf(pvals[1:b]))
     
     setTxtProgressBar(pb, b)
   }
-   
+  
   pvals
   
 }
@@ -175,10 +175,11 @@ ps0 = SIM(mu = 0, sigma2 = 1, mu0 = 0, type = "SLAN", t = 1, n1 = 100, n2 = 50)
 ps1 = SIM(mu = 0.15, sigma2 = 1, mu0 = 0, type = "SLAN", t = 1, n1 = 100, n2 = 50)
 
 # Plots
-pdf("Gaussian_pvals.pdf", width = 10, height = 5)
+pdf("Gaussian_pvals.pdf", width = 8, height = 4)
 par(mfrow = c(1, 2))
-plot(ecdf(ps0), col = 4, main = "null", xlab = "p", ylab = "F(p)")
+par(cex = 1)
+plot(ecdf(ps0), col = 1, main = "null", xlab = "p", ylab = "F(p)", lwd = 2)
 abline(a = 0, b = 1)
-plot(ecdf(ps1), col = 4, main = "alt", xlab = "p", ylab = "F(p)")
+plot(ecdf(ps1), col = 1, main = "alt", xlab = "p", ylab = "F(p)", lwd = 2)
 abline(a = 0, b = 1)
 dev.off()
