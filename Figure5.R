@@ -36,12 +36,15 @@ Posterior_density = function(theta0, y, model, gamma, n, llim = 0){
 }
 
 # Plot
+pdf("Posterior_densities.pdf", width = 8, height = 4)
 grid = seq(-18, 10, length.out = 1e4)
 par(mfrow = c(1, 2))
+par(cex = 1)
 n = 50
-plot(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 0.01, n = n, model = "normal"), type = "l", lty = 1, main = "", xlab = "", ylab = "", col = "black", ylim = c(0, 0.2), lwd = 1.2) 
-lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 0.01, n = n, model = "exponential"), lty = 1, col = "blue", lwd = 1.2) 
-lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1, n = n, model = "exponential"), lty = 1, col = "red", lwd = 1.2) 
-plot(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1/5, n = n, model = "normal"), type = "l", lty = 1, main = "", xlab = "", ylab = "", col = "black", ylim = c(0, 0.2), lwd = 1.2) 
-lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1/5, n = n, model = "exponential"), lty = 1, col = "blue", lwd = 1.2) 
-lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1, n = n, model = "exponential"), lty = 1, col = "red", lwd = 1.2) 
+plot(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 0.01, n = n, model = "normal"), type = "l", lty = 1, main = "", xlab = "", ylab = "", ylim = c(0, 0.2), lwd = 2) 
+lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 0.01, n = n, model = "exponential"), lty = 1, col = 8, lwd = 2) 
+lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1, n = n, model = "exponential"), lty = 2, lwd = 2) 
+plot(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1/5, n = n, model = "normal"), type = "l", lty = 1, main = "", xlab = "", ylab = "", ylim = c(0, 0.2), lwd = 2) 
+lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1/5, n = n, model = "exponential"), lty = 1, col = 8, lwd = 2) 
+lines(grid, Posterior_density(theta0 = 2, y = 0.45, gamma = 1, n = n, model = "exponential"), lty = 2, lwd = 2) 
+dev.off()
