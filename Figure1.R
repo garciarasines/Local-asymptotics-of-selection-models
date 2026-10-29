@@ -37,19 +37,18 @@ SIM = function(n, theta, theta0, t, B = 1e4, Nsim = 1e5){
     
   }
   
-  if (theta == theta0){
-    plot(ecdf(pvals_SLAN), col = 1, lwd = 2, main = paste("n =", n, ", null"), xlab = "p", ylab = "F(p)")
-    lines(ecdf(pvals_exact),col = 8, lwd = 2)
-    abline(a = 0, b = 1)
-  } else {
-    plot(ecdf(pvals_SLAN), col = 1, lwd = 2, main = paste("n =", n, ", alt"), xlab = "p", ylab = "F(p)")
-    lines(ecdf(pvals_exact),col = 8, lwd = 2)
-    abline(a = 0, b = 1)
-  }
+  xgrid = seq(0, 1, length.out = 1001)
+  title = if (theta == theta0) paste("n =", n, ", null") else paste("n =", n, ", alt")
+  
+  plot(xgrid, ecdf(pvals_SLAN)(xgrid), type = "l",
+       col = 1, lwd = 2, main = title, xlab = "p", ylab = "F(p)",
+       xlim = c(0, 1), ylim = c(0, 1))
+  lines(xgrid, ecdf(pvals_exact)(xgrid), col = 8, lwd = 2)
+  abline(a = 0, b = 1)
   
 }
 
-pdf("Exponential_pvals.pdf", width = 10, height = 5)
+pdf("Exponential_pvals.pdf", width = 8, height = 4)
 par(mfrow = c(1, 2))
 SIM(n = 100, theta = 2, theta0 = 2, t = 3.57, B = 1e5)
 SIM(n = 100, theta = 2.15, theta0 = 2, t = 3.57, B = 1e5)
